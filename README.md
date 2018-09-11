@@ -17,7 +17,7 @@
 |name|string|null: false|
 |email|string|null: false|
 
-### Association 
+### Association
 - has_many :messages
 - has_many :members
 
