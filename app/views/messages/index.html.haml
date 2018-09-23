@@ -1,0 +1,37 @@
+.contents
+  .leftContainer
+    .leftHeader
+      %p.yourself.personal ryosukemaehara
+      %a.fa.fa-edit.personal{href:"#"}
+      %a.fa.fa-cog.personal{href:"#"}
+    .groups
+      .group
+        %p.group__name テニス部
+        %p.group__status まだメッセージはありません。
+      .group
+        %p.group__name 武藤ゼミ
+        %p.group__status まだメッセージはありません。
+  .rightContainer
+    .rightHeader
+    .messages ryousukemaehara
+    .posts
+      %form
+        %input{type: "text", class: "posts__text-field", placeholder: "Type a message"}
+        %label{class: "posts__upload-label", for: "upload-icon"}
+          %i.fa.fa-picture-o
+          %input{type: "file", class: "hidden", id: "upload-icon"}
+        %input{type: "submit", value: "Send", class: "posts__submit-button"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
