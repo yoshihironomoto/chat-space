@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  height: 30px;
+  width: 100%;
+  background-color: #38AEF0;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+}
+
+.contents {
+  height: 100%;
+}
+
+.leftContainer {
+  width: 300px;
+  float: left;
+  height: 100%;
+}
+
+.leftHeader {
+  height: 100px;
+  background-color: #253141;
+  padding: 0 20px;
+  line-height: 100px;
+}
+
+.yourself {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 95px;
+}
+
+.personal {
+  color: #FFFFFF;
+}
+
+.fa {
+  margin-left: 5px;
+}
+
+.groups {
+  height: calc(100% - 100px);
+  background-color: #2f3e51;
+  padding: 0 20px;
+}
+
+.group {
+  color: #FFFFFF;
+
+  &__name {
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+
+  &__status {
+    font-size: 11px;
+    padding-bottom: 40px;
+  }
+}
+
+.rightContainer {
+  width: calc(100% - 300px);
+  background-color: white;
+  float: left;
+  height: 100%;
+}
+
+.rightHeader {
+  height: 100px;
+  background-color: white;
+  border-bottom: 1px solid #eeeeee;
+  padding: 0 40px;
+  position: relative;
+}
+
+.joinGroup__current {
+  font-size: 20px;
+  color: #333333;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+.joinGroup__members {
+  font-size: 12px;
+  padding-top: 15px;
+  color: #999999;
+}
+
+.joinGroup__edit-button {
+  position: absolute;
+  top:28px;
+  right:40px;
+  display: block;
+  height: 40px;
+  padding: 0 20px;
+  background-color: white;
+  color: #38AEF0;
+  cursor: pointer;
+  border: 1px solid #38AEF0
+}
+
+.messages {
+  overflow: scroll;
+  height: calc(100% - 190px);
+  background-color: #EEEEEE;
+  padding: 46px 40px 0 40px;
+}
+
+.message {
+  &__name {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #434A54;
+    padding: 0 10px 10px 0;
+  }
+
+  &__time {
+  	display: inline-block;
+  	font-size: 12px;
+  	color: #999999;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: #434A54;
+    margin-bottom: 40px;
+  }
+}
+
+.posts {
+  height:90px;
+  background-color: #DDDDDD;
+  padding: 20px 40px;
+
+  &__text-field {
+    padding: 0 10px;
+    height: 50px;
+    width: 88%;
+    font-size: 16px;
+    color: #434A54;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__upload-label {
+	position: absolute;
+	bottom: 0;
+    right: 180px;
+    cursor: pointer;
+
+	.fa-picture-o {
+      font-size: 22px;
+	}
+
+	.hidden {
+	 display: none;
+    }
+  }
+
+  &__submit-button {
+  	height: 50px;
+  	width: 100px;
+    margin-left: 15px;
+  	background-color: #38AEF0;
+  	display: inline-block;
+  	color: white;
+  	cursor: pointer;
+  }
+}
