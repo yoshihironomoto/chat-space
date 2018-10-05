@@ -1,34 +1,22 @@
-/ %header チャットグループが作成されました。
-/ .contents
-/   .leftContainer
-/     .leftHeader
-/       %p.yourself.personal アリストテレス
-/       %a.fa.fa-edit.personal{href:"#"}
-/       %a.fa.fa-cog.personal{href:"#"}
-/     .groups
-/       .group
-/         %p.group__name sampleグループ
-/         %p.group__status byebye
-/       .group
-/         %p.group__name 哲学部
-/         %p.group__status まだメッセージはありません。
-/       .group
-/         %p.group__name 武藤ゼミ
-/         %p.group__status まだメッセージはありません。
-/   .rightContainer
-/     .rightHeader
-/       .joinGroup
-/         %p.joinGroup__current sampleグループ
-/         %p.joinGroup__members Member : アリストテレス, ソクラテス, プラトン
-/         %input{type: "submit", value: "Edit", class: "joinGroup__edit-button"}
+.wrapper
+  = render 'devise/shared/side_bar'
+  .chat
+    .header
+      .left-header 
+        .left-header__title 
+        = @group.name
+        %ul.left-header__members
+          %li.member member : 
+          = current_user.messages
+      .right-header
+        %a{class: "right-header__button", href: "/groups/#{@group.id}/edit"} EDIT
     .messages
-       = render @messages
-    .posts
-      .form
-        = form_for [@group, @message] do |f|
-          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-          .form__mask
-            = f.label :image, class: 'form__mask__image' do
-              = fa_icon 'picture-o', class: 'icon'
-              = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'form__submit'
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'

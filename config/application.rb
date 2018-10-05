@@ -15,5 +15,7 @@ module ChatSpace
       g.test_framework
     end
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
   end
+  Time::DATE_FORMATS[:default] = '%Y/%m/%d %H:%M'
 end
