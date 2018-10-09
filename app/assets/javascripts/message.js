@@ -2,7 +2,8 @@ $(function() {
   function buildHTML(message){
   	var MessageImage = '';
   	if(message.image){
-  	  MessageImage ='<img src= ${message.image}, class="lower-message__image" >'}
+  	  MessageImage =`<img src= "${message.image}", class="lower-message__image" >`
+  	}
 
     var html = `<div class="message">
                   <div class"upper-message">
@@ -22,6 +23,7 @@ $(function() {
                 </div>`
      return html;
   }
+
   $('#new_message').on('submit',function(e) {
     e.preventDefault();
     var url = window.location.href
@@ -37,10 +39,11 @@ $(function() {
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('#form_empty').val('');
+      $('#new_message')[0].reset();
+      $('#form_disabled').prop('disabled', false);
     })
     .fail(function(){
       alert('error')
-    })
-  })
+    });
+  });
 });
