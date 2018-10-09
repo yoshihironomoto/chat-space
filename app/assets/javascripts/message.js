@@ -37,7 +37,7 @@ $(function() {
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('#form_empty').val('')
+      $('#form_empty').val('');
     })
     .fail(function(){
       alert('error')
