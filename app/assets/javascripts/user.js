@@ -14,7 +14,6 @@ $(function() {
     $('#user-search-result').append(html);
   }
 
- 
   function buildMemberHTML(id, name) {
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
                   <input name='group[user_ids][]' type='hidden' value= '${id}'>
@@ -23,7 +22,6 @@ $(function() {
                 </div>`
     $('#chat-group-users').append(html);
   }
- 
 
   $('#user-search-field').on('keyup', function() {
     var input = $('#user-search-field').val();
