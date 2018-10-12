@@ -1,9 +1,9 @@
 $(function() {
   function buildHTML(message){
-  	var MessageImage = '';
-  	if(message.image){
-  	  MessageImage =`<img src= "${message.image}", class="lower-message__image" >`
-  	}
+    var MessageImage = '';
+    if(message.image){
+      MessageImage =`<img src= "${message.image}", class="lower-message__image" >`
+    }
 
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class"upper-message">
@@ -47,31 +47,27 @@ $(function() {
     });
   });
 
-  
-
-  setInterval(function() {
-    var interval = setInterval(function() {
-      if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-    $.ajax({
-      type: 'GET',
-      url: location.href,
-      dataType: 'json'
-    })
-    .done(function(messages) {
-      var id = $('.message').data('messageId');
-      var insertHTML = '';
-      messages.forEach(function(message) {
-        if (message.id > id) {
-          insertHTML += buildHTML(massage);
-        }
+  var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        dataType: 'json'
+      })
+      .done(function(messages) {
+        var id = $('.message:last').data('messageId');
+        var insertHTML = '';
+        messages.forEach(function(message) {
+          if (message.id > id) {
+            insertHTML += buildHTML(message);
+          }
+        });
+        $('.messages').append(insertHTML);
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました');
       });
-      $('.messages').append(insertHTML);
-    })
-    .fail(function(data) {
-      alert('自動更新に失敗しました');
-    });
   } else {
-    clearInterval(interval);
-    }} , 5 * 5000 );
-  });
+      clearInterval(interval);
+    }} , 5 * 1000 );
 });
