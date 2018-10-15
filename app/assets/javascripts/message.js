@@ -1,11 +1,10 @@
 $(function() {
   function buildHTML(message){
-  	var MessageImage = '';
-  	if(message.image){
-  	  MessageImage =`<img src= "${message.image}", class="lower-message__image" >`
-  	}
-
-    var html = `<div class="message">
+    var MessageImage = '';
+    if(message.image){
+      MessageImage =`<img src= "${message.image}", class="lower-message__image" >`
+    }
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class"upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -21,7 +20,7 @@ $(function() {
                     ${MessageImage}
                   </div>
                 </div>`
-     return html;
+     $(".messages").append(html);
   }
 
   $('#new_message').on('submit',function(e) {
@@ -46,4 +45,27 @@ $(function() {
       alert('error')
     });
   });
+
+  function updatePage() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      var message_id = $('.message:last').data('messageId'); //(1)
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        data: {
+          message: {id: message_id}
+        },
+        dataType: "json"
+      })
+      .done(function(messages) {
+        messages.forEach(function(message){
+         buildHTML(message);
+        });
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      });
+    }
+  }
+    setInterval(updatePage, 5000);
 });
